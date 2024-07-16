@@ -23,3 +23,12 @@ def log_in_two():
 def blogs():
     return {'message': 'It is a blog page'}
 
+
+@app.get('/blogs/{name}')
+def blog_name(name: int):
+    return {'message': f'The name is {name}'}
+
+
+
+
+
