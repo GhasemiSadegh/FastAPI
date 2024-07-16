@@ -18,3 +18,8 @@ def log_in():
 def log_in_two():
     return "It's the log in second page"
 
+
+@app.get('/blogs')
+def blogs():
+    return {'message': 'It is a blog page'}
+
