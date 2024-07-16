@@ -1,5 +1,7 @@
 from fastapi import FastAPI
-import uvicorn
+from enum import Enum
+
+# import uvicorn
 
 app = FastAPI()
 
@@ -9,7 +11,7 @@ def hello():
     return 'hello'
 
 
-@app.get('/log_in')
+@app.get('/log-in')
 def log_in():
     return 'It is a log in page'
 
@@ -17,5 +19,16 @@ def log_in():
 @app.get('/blogs/{name}')
 def blog_name(name: int):
     return {'message': f'The name is {name}'}
+
+
+class Limiter(str, Enum):
+    Mesal1 = 'One'
+    Mesal2 = 'Two'
+
+
+@app.get('/test/{data}')
+def test_data(data: Limiter):
+    return {'message': f' The massage is {data}'}
+
 
 
