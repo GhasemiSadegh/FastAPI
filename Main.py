@@ -14,21 +14,8 @@ def log_in():
     return 'It is a log in page'
 
 
-@app.post('/log_in')
-def log_in_two():
-    return "It's the log in second page"
-
-
-@app.get('/blogs')
-def blogs():
-    return {'message': 'It is a blog page'}
-
-
 @app.get('/blogs/{name}')
 def blog_name(name: int):
     return {'message': f'The name is {name}'}
-
-
-
 
 
