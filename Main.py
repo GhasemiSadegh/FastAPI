@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from enum import Enum
+from typing import Optional
+
 
 # import uvicorn
 
@@ -31,3 +33,6 @@ def test_query(name: str = None, age: int = None):
     return {'message': f'{name=} -- {age=}'}
 
 
+@app.get('/queriiestwo')
+def test_quereis_two(country: Optional[int] = None):
+    return {'message': f'{country}'}
