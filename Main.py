@@ -6,13 +6,13 @@ import uvicorn
 app = FastAPI()
 
 
-@app.get('/', summary='Home page.', description='We are learning FastAPI and this is an example description.')
+@app.get('/myhome', summary='Home page.', description='We are learning FastAPI and this is an example description.')
 def home():
     return 'home page'
 
 
-@app.get('/home/{name}/{age}', tags=['learning'])
-def home(name: str, age: int, postcode: Optional[str] = None, validity: bool = True):
+@app.get('/myhome/pageone/{name}/{age}', tags=['learning'])
+def my_details(name: str, age: int, postcode: Optional[str] = None, validity: bool = True):
     return {'name': f'{name}',
             'age': f'{age}',
             'postcode': f'{postcode}',
@@ -20,8 +20,8 @@ def home(name: str, age: int, postcode: Optional[str] = None, validity: bool = T
             }
 
 
-@app.get('/stt', status_code=status.HTTP_200_OK, tags=['learning'], response_description='This is related to 200 ok')
-def stt(ids: int, response: Response):
+@app.get('/myhome/pagetwo', status_code=status.HTTP_200_OK, tags=['learning'], response_description='This is related to 200 ok')
+def my_status(ids: int, response: Response):
     """
     - **ids**: This is where I can explain what id is
     """
@@ -31,12 +31,10 @@ def stt(ids: int, response: Response):
     return 'id is ok'
 
 
-@app.get(
-    '/practice', tags=['Practice'],
-    response_description='It is a response description.'
-        )
+@app.get('/myhome/pagethree', tags=['Practice'], response_description='It is a response description.')
 def to_repeat():
     """
     **This is also a description written in the method.**
     """
     return "ok"
+
