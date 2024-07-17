@@ -6,7 +6,7 @@ import uvicorn
 app = FastAPI()
 
 
-@app.get('/home/{name}/{age}')
+@app.get('/home/{name}/{age}', tags=['learning'])
 def home(name: str, age: int, postcode: Optional[str] = None, validity: bool = True):
     return {'name': f'{name}',
             'age': f'{age}',
@@ -15,7 +15,7 @@ def home(name: str, age: int, postcode: Optional[str] = None, validity: bool = T
             }
 
 
-@app.get('/stt', status_code=status.HTTP_200_OK)
+@app.get('/stt', status_code=status.HTTP_200_OK, tags=['test'])
 def stt(ids: int, response: Response):
     if ids > 5:
         response.status_code = status.HTTP_404_NOT_FOUND
