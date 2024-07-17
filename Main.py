@@ -29,3 +29,14 @@ def stt(ids: int, response: Response):
         response.status_code = status.HTTP_404_NOT_FOUND
         return 'id too big'
     return 'id is ok'
+
+
+@app.get(
+    '/practice', tags=['Practice'],
+    response_description='It is a response description.'
+        )
+def to_repeat():
+    """
+    **This is also a description written in the method.**
+    """
+    return "ok"
