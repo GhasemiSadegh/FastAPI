@@ -8,27 +8,22 @@ app = FastAPI()
 
 @app.get('/')
 def hello():
-    return 'hello'
+    return 'home page nothing after slash'
 
 
 @app.get('/log-in')
 def log_in():
-    return 'It is a log in page'
+    return 'using log in method with a get'
 
 
 @app.get('/blogs/{name}')
 def blog_name(name: int):
-    return {'message': f'The name is {name}'}
+    return {'message': f'{name} is taken from user after blogs'}
 
 
 class Limiter(str, Enum):
     Mesal1 = 'One'
     Mesal2 = 'Two'
-
-
-@app.get('/test/{data}')
-def test_data(data: Limiter):
-    return {'message': f' The massage is {data}'}
 
 
 
