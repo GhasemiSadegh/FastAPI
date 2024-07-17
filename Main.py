@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Response
 from enum import Enum
 from typing import Optional
 import uvicorn
@@ -13,3 +13,11 @@ def home(name: str, age: int, postcode: Optional[str] = None, validity: bool = T
             'postcode': f'{postcode}',
             'validity': f'{validity}'
             }
+
+
+@app.get('/stt', status_code=status.HTTP_200_OK)
+def stt(ids: int, response: Response):
+    if ids > 5:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return 'id too big'
+    return 'id is ok'
