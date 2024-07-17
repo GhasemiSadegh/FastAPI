@@ -27,7 +27,7 @@ class Limiter(str, Enum):
 
 
 @app.get('/queries')
-def test_query(name: str, age: int):
+def test_query(name: str = None, age: int = None):
     return {'message': f'{name=} -- {age=}'}
 
 
