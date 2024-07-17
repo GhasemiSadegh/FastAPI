@@ -26,4 +26,8 @@ class Limiter(str, Enum):
     Mesal2 = 'Two'
 
 
+@app.get('/queries')
+def test_query(name, age):
+    return {'message': f'{name=} -- {age=}'}
+
 
