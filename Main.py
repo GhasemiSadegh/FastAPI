@@ -12,7 +12,6 @@ app.include_router(myhome_get.router)
 app.include_router(myhome_post.router)
 
 
-
 @app.get('/')
 def home_page():
     return 'This the home page with no endpoint'
