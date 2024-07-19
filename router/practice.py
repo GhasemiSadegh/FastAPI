@@ -40,8 +40,8 @@ def my_questions(question_id: int = Query(None,
                                           description='text',
                                           alias='QuestionID',
                                           deprecated=False,
-                                          max_length=5,
-                                          min_length=20
+                                          max_length=10,
+                                          min_length=2
                                           )
                  ):
     return {
@@ -49,5 +49,12 @@ def my_questions(question_id: int = Query(None,
         'question_id': question_id}
 
 
-@router.post('/users/accounts')
-def meta_data(acc_id: int = Query(0, max_length=)):
+@router.post('/users/accounts/{id}')
+def meta_data(content: str, number: int, acc_id=Query(0,
+                                                      max_length=10,
+                                                      min_length=4,
+                                                      alias='User Account ID',
+                                                      description='Practicing meta data for a Query')):
+    return {'content': content,
+            'ID': acc_id,
+            'number': number}
