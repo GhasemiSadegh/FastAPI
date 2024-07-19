@@ -24,3 +24,6 @@ def photos(book_id):
 def search(onesearch: SearchValidator):
     return {'author': onesearch.author}
 
+
+@router.post('/books')
+def body_parameter
