@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, Body, Query
+from fastapi import FastAPI, APIRouter, Body, Query, Path
 from pydantic import BaseModel
 from typing import Optional, List
 
@@ -63,3 +63,8 @@ def meta_data(content: str, number: int, acc_id=Query(0,
 @router.post('/list-strings')
 def list_str(first_par: list[str] = Query(),  second_par: Optional[List[int]] = Query(None)):
     return {'msg': f'Your strings are {first_par} and your integers are {second_par}'}
+
+
+@router.get('/limited-id/{ids}')
+def limited_id(ids: int = Path(..., gt=5, lt=10)):
+    return {'id': ids}
