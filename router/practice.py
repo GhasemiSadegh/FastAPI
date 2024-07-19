@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, Body
+from fastapi import FastAPI, APIRouter, Body, Query
 from pydantic import BaseModel
 from typing import Optional
 
@@ -28,3 +28,10 @@ def search(onesearch: SearchValidator):
 def body_parameter(content: str = Body(..., min_length=10, max_length=15, regex='^[A-Z].*')):
     return content
 
+
+@router.post('/users/questions')
+def my_questions(question_id: int = Query(None, title='text', description='text', alias='QuestionID',
+                                          deprecated=False)):
+    return {
+        'data': 'ok',
+        'question_id': question_id}

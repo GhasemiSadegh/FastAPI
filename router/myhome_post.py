@@ -23,12 +23,3 @@ def my_details(data: PydanticValidator, id: int, version: int = 1):
             'data': data,
             'Your id': id,
             'The version': version}
-
-
-@router.post('/users/questions')
-def my_questions(data: PydanticValidator, question_id: int = Query(None, title='text', description='text',
-                                                                   alias='QuestionID', deprecated=False)):
-    return {
-        'data': data,
-        'question_id': question_id
-    }
