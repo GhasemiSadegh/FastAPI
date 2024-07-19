@@ -1,10 +1,9 @@
 from fastapi import FastAPI, status, Response
-from enum import Enum
-from typing import Optional
-import uvicorn
+# from enum import Enum
+# from typing import Optional
+# import uvicorn
 from router import myhome_get
 from router import myhome_post
-
 
 app = FastAPI()
 
