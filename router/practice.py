@@ -61,5 +61,5 @@ def meta_data(content: str, number: int, acc_id=Query(0,
 
 
 @router.post('/list-strings')
-def list_str(first_par: List[str], second_par: List[int]):
-    return {'msg': f'Your strings are {first_par} and you second integers are {second_par}'}
+def list_str(first_par: list[str] = Query(),  second_par: Optional[List[int]] = Query(None)):
+    return {'msg': f'Your strings are {first_par} and your integers are {second_par}'}
