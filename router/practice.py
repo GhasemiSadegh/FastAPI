@@ -47,3 +47,7 @@ def my_questions(question_id: int = Query(None,
     return {
         'data': 'ok',
         'question_id': question_id}
+
+
+@router.post('/users/accounts')
+def meta_data(acc_id: int = Query(0, max_length=)):
