@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter, Body, Query
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
 router = APIRouter(prefix='/my-library', tags=['Books'])
 
@@ -58,3 +58,8 @@ def meta_data(content: str, number: int, acc_id=Query(0,
     return {'content': content,
             'ID': acc_id,
             'number': number}
+
+
+@router.post('/list-strings')
+def list_str(first_par: List[str], second_par: List[int]):
+    return {'msg': f'Your strings are {first_par} and you second integers are {second_par}'}
