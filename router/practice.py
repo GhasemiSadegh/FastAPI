@@ -1,7 +1,6 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Body
 from pydantic import BaseModel
 from typing import Optional
-
 
 router = APIRouter(prefix='/my-library', tags=['Books'])
 
@@ -13,7 +12,7 @@ class SearchValidator(BaseModel):
     name: Optional[str] = None
 
 
-@router.get('/books/{book_id}') # book_id is embedded in the link where the book photo is
+@router.get('/books/{book_id}')  # book_id is embedded in the link where the book photo is
 def photos(book_id):
     if book_id:
         return 'Available'
@@ -26,4 +25,6 @@ def search(onesearch: SearchValidator):
 
 
 @router.post('/books')
-def body_parameter
+def body_parameter(content: str = Body(..., min_length=10, max_length=15, regex='^[A-Z].*')):
+    return content
+
