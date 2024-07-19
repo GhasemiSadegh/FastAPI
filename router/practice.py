@@ -25,13 +25,13 @@ def search(onesearch: SearchValidator):
 
 
 @router.post('/books')
-def body_parameter(content: str = Body(...,
+def body_parameter(comment: str = Body(...,
                                        min_length=10,
                                        max_length=15,
                                        regex='^[A-Z].*'
                                        )
                    ):
-    return content
+    return comment
 
 
 @router.post('/users/questions')
@@ -39,7 +39,9 @@ def my_questions(question_id: int = Query(None,
                                           title='text',
                                           description='text',
                                           alias='QuestionID',
-                                          deprecated=False
+                                          deprecated=False,
+                                          max_length=5,
+                                          min_length=20
                                           )
                  ):
     return {

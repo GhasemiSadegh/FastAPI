@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query
 from pydantic import BaseModel
 from typing import Optional
 
-router = APIRouter(prefix='/myhome', tags=['posts'])
+router = APIRouter(prefix='/myhome', tags=['Posts'])
 
 
 class PydanticValidator(BaseModel):
