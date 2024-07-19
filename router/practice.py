@@ -9,7 +9,7 @@ router = APIRouter(prefix='/my-library', tags=['Books'])
 class SearchValidator(BaseModel):
     author: Optional[str] = None
     genre: Optional[str] = None
-    year: Optional[int] = None
+    year: Optional[int] = 1
     name: Optional[str] = None
 
 
@@ -21,6 +21,6 @@ def photos(book_id):
 
 
 @router.post('/books/search')
-def search(data: BaseModel, author, genre, year, name):
-    return {'Search result is': data}
+def search(onesearch: SearchValidator):
+    return {'author': onesearch.author}
 
