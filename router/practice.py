@@ -68,3 +68,5 @@ def list_str(first_par: list[str] = Query(),  second_par: Optional[List[int]] = 
 @router.get('/limited-id/{ids}')
 def limited_id(ids: int = Path(..., gt=5, lt=10)):
     return {'id': ids}
+
+
