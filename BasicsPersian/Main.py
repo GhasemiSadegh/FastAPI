@@ -1,10 +1,8 @@
-from fastapi import FastAPI, status, Response
+from fastapi import FastAPI
 # from enum import Enum
 # from typing import Optional
 # import uvicorn
-from router import myhome_get
-from router import myhome_post
-from router import practice
+from BasicsPersian.router import practice, myhome_get, myhome_post
 
 app = FastAPI()
 
