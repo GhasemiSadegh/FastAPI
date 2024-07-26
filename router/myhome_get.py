@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from fastapi import FastAPI, status, Response
-# from enum import Enum
 from typing import Optional
 
 

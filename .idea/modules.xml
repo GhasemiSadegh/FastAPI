@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FastAPI_All.iml" filepath="$PROJECT_DIR$/.idea/FastAPI_All.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../SQLAlchemy/.idea/SQLAlchemy.iml" filepath="$PROJECT_DIR$/../SQLAlchemy/.idea/SQLAlchemy.iml" />
     </modules>
   </component>
 </project>
