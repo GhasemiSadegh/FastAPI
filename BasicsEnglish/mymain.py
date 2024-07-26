@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
@@ -25,3 +25,9 @@ async def bands() -> list[dict]:
     return BANDS
 
 
+@app.get('/bands/{band_id}')
+async def band(band_id: int) -> dict:
+    band = next((b for b in BANDS if b['id'] == band_id), None)
+    if band is None:
+        raise HTTPException(status_code=404, detail='band not found')
+    return band
