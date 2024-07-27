@@ -15,7 +15,11 @@ async def about() -> str:
 
 
 BANDS = [
-    {'id': 1, 'name': 'Ali', 'genre': 'Rock'},
+    {'id': 1, 'name': 'Ali', 'genre': 'Rock',
+     'albums': [
+         {'title': 'Flowers of Spring', 'release_date': '2023-01-02'}
+                ]
+     },
     {'id': 2, 'name': 'Reza', 'genre': 'Jazz'},
     {'id': 3, 'name': 'Gholam', 'genre': 'Hip Hop',
      'albums': [
@@ -27,12 +31,16 @@ BANDS = [
 
 
 @app.get('/bands')
-async def bands(genre: GenreURLChoices | None = None) -> list[Band]:
+async def bands(genre: GenreURLChoices | None = None,
+                has_album: bool = False) -> list[Band]:
+    band_list = [Band(**b) for b in BANDS] # ** unpacks the values of each item in the dict
+
     if genre:
-        return [
-            Band(**b) for b in BANDS if genre.value == b['genre'].lower()
-    ]
-    return [Band(**b) for b in BANDS]
+        band_list = [b for b in band_list if genre.value == b.genre.lower()]
+    if has_album:
+        band_list = [b for b in band_list if len(b.albums) > 0]
+
+    return band_list
 
 
 @app.get('/bands/{band_id}')
