@@ -13,17 +13,24 @@ async def index():
 async def about() -> str:
     return 'An amazing company'
 
+
 BANDS = [
     {'id': 1, 'name': 'Ali', 'genre': 'Rock'},
     {'id': 2, 'name': 'Reza', 'genre': 'Jazz'},
-    {'id': 3, 'name': 'Gholam', 'genre': 'Hip Hop'},
+    {'id': 3, 'name': 'Gholam', 'genre': 'Hip Hop',
+     'albums': [
+         {'title': 'Master of Reality', 'release_date': '2024-01-01'}
+     ]
+     },
     {'id': 4, 'name': 'Feri', 'genre': 'Pop'}
 ]
 
 
 @app.get('/bands')
 async def bands() -> list[Band]:
-    return [Band(**b) for b in BANDS]
+    return [
+        Band(**b) for b in BANDS
+    ]
 
 
 @app.get('/bands/{band_id}')
@@ -42,4 +49,3 @@ async def band(band_id: int) -> Band:
 @app.get('/bands/genre/{genre}')
 async def bands_for_genre(genre: GenreURLChoices) -> list[dict]:
     return [b for b in BANDS if genre.value == b['genre'].lower()]
-

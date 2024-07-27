@@ -15,9 +15,6 @@ class Band(BaseModel):
     albums: list[Album] = []
 
 
-
-
-
 class GenreURLChoices(Enum):
     ROCK = 'rock'
     JAZZ = 'jazz'
