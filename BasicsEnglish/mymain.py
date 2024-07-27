@@ -27,10 +27,12 @@ BANDS = [
 
 
 @app.get('/bands')
-async def bands() -> list[Band]:
-    return [
-        Band(**b) for b in BANDS
+async def bands(genre: GenreURLChoices | None = None) -> list[Band]:
+    if genre:
+        return [
+            Band(**b) for b in BANDS if genre.value == b['genre'].lower()
     ]
+    return [Band(**b) for b in BANDS]
 
 
 @app.get('/bands/{band_id}')
