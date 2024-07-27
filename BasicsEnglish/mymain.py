@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from schemas import GenreURLChoices, Band
+from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
 
 app = FastAPI()
 
@@ -32,8 +32,8 @@ BANDS = [
 
 @app.get('/bands')
 async def bands(genre: GenreURLChoices | None = None,
-                has_album: bool = False) -> list[Band]:
-    band_list = [Band(**b) for b in BANDS] # ** unpacks the values of each item in the dict
+                has_album: bool = False) -> list[BandWithID]:
+    band_list = [BandWithID(**b) for b in BANDS] # ** unpacks the values of each item in the dict
 
     if genre:
         band_list = [b for b in band_list if genre.value == b.genre.lower()]
@@ -44,8 +44,8 @@ async def bands(genre: GenreURLChoices | None = None,
 
 
 @app.get('/bands/{band_id}')
-async def band(band_id: int) -> Band:
-    band = next((Band(**b) for b in BANDS if b['id'] == band_id), None)
+async def band(band_id: int) -> BandWithID:
+    band = next((BandWithID(**b) for b in BANDS if b['id'] == band_id), None)
     if band is None:
         raise HTTPException(status_code=404, detail='band not found')
     return band
@@ -59,3 +59,7 @@ async def band(band_id: int) -> Band:
 @app.get('/bands/genre/{genre}')
 async def bands_for_genre(genre: GenreURLChoices) -> list[dict]:
     return [b for b in BANDS if genre.value == b['genre'].lower()]
+
+
+@app.post('/bands')
+async def create_band(band_data: BandCreate)
