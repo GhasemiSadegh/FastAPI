@@ -49,7 +49,7 @@ async def bands(genre: GenreURLChoices | None = None,
 
 
 @app.get('/bands/{band_id}')
-async def band(band_id: Annotated[int, Path(title="Band ID")]) -> BandWithID:
+async def band(band_id: Annotated[int, Path(title="Band ID", description='This is description')]) -> BandWithID:
     band = next((BandWithID(**b) for b in BANDS if b['id'] == band_id), None)
     if band is None:
         raise HTTPException(status_code=404, detail='band not found')
