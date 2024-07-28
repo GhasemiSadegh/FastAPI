@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 @asynccontextmanager
 async def lifespan(app: FastAPI):
 
+
 app = FastAPI()
 
 
