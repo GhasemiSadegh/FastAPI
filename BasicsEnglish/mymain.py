@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException, Path, Query, Body
 from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
 from typing import Annotated
 
-
 app = FastAPI()
 
 
@@ -37,8 +36,12 @@ async def bands(genre: GenreURLChoices | None = None,
                 q: Annotated[str | None, Query(max_length=10)] = None) -> list[BandWithID]:
     band_list = [BandWithID(**b) for b in BANDS]  # ** unpacks the values of each item in the dict
 
+    if q:
+        band_list = [b for b in band_list if q.lower() in b.name.lower()
+                     ]
     if genre:
-        band_list = [b for b in band_list if genre.value == b.genre.lower()]
+        band_list = [b for b in band_list if genre.value == b.genre.lower()
+                     ]
     # if has_album:
     #     band_list = [b for b in band_list if len(b.albums) > 0]
 
