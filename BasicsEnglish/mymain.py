@@ -74,3 +74,4 @@ async def create_band(band_data: BandCreate) -> BandWithID:
     return band
 
 # using postman to test the post and get requests
+# installed SQLModel
