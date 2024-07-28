@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Path, Query, Body
-from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
+from schemas import GenreURLChoices, BandBase, BandCreate, Band, Album
 from typing import Annotated
 
 
