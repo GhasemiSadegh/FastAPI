@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Path, Query, Body
 from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
 from typing import Annotated
+from sqlmodel import SQLModel, Field
 
 app = FastAPI()
 
@@ -75,3 +76,4 @@ async def create_band(band_data: BandCreate) -> BandWithID:
 
 # using postman to test the post and get requests
 # installed SQLModel
+# Reviewing SQLAlchemy
