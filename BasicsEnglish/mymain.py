@@ -68,4 +68,4 @@ async def create_band(band_data: BandCreate) -> BandWithID:
     BANDS.append(band)
     return band
 
-# using postman to test the post and get requests
+# using postman to test the post and get requests 
