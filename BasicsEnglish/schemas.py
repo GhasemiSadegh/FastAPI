@@ -1,25 +1,29 @@
 from enum import Enum
+from sqlmodel import SQLModel, Field
 from pydantic import BaseModel
 from datetime import date
 
 
-class Album(BaseModel):
+class AlbumBase(SQLModel):
     title: str
     release_date: date
 
 
-class BandBase(BaseModel):
+class Album(AlbumBase, table=True):
+    id: int = Field(default=None, primary_key=True)
+
+
+class BandBase(SQLModel):
     name: str
     genre: str
-    albums: list[Album] = []
 
 
 class BandCreate(BandBase):
-    pass
+    albums: list[AlbumBase] | None = None
 
 
-class BandWithID(BandBase):
-    id: int
+class Band(BandBase, table=True):
+    id: int = Field(default=None, primary_key=True)
 
 
 class GenreURLChoices(Enum):

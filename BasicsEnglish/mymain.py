@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Path, Query, Body
 from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
 from typing import Annotated
-from sqlmodel import SQLModel, Field
+
 
 app = FastAPI()
 
