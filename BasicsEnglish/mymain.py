@@ -1,7 +1,10 @@
 from fastapi import FastAPI, HTTPException, Path, Query, Body
 from models import GenreURLChoices, BandBase, BandCreate, Band, Album
 from typing import Annotated
+from contextlib import asynccontextmanager
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
 
 app = FastAPI()
 
