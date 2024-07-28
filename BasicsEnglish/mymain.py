@@ -67,3 +67,5 @@ async def create_band(band_data: BandCreate) -> BandWithID:
     band = BandWithID(id=id, **band_data.model_dump()).model_dump()
     BANDS.append(band)
     return band
+
+# using postman to test the post request
