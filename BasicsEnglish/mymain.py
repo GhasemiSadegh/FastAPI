@@ -1,5 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Path, Query, Body
 from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
+from typing import Annotated
+
 
 app = FastAPI()
 
@@ -32,19 +34,19 @@ BANDS = [
 
 @app.get('/bands')
 async def bands(genre: GenreURLChoices | None = None,
-                has_album: bool = False) -> list[BandWithID]:
+                q: Annotated[str | None, Query(max_length=10)] = None) -> list[BandWithID]:
     band_list = [BandWithID(**b) for b in BANDS]  # ** unpacks the values of each item in the dict
 
     if genre:
         band_list = [b for b in band_list if genre.value == b.genre.lower()]
-    if has_album:
-        band_list = [b for b in band_list if len(b.albums) > 0]
+    # if has_album:
+    #     band_list = [b for b in band_list if len(b.albums) > 0]
 
     return band_list
 
 
 @app.get('/bands/{band_id}')
-async def band(band_id: int) -> BandWithID:
+async def band(band_id: Annotated[int, Path(title="Band ID")]) -> BandWithID:
     band = next((BandWithID(**b) for b in BANDS if b['id'] == band_id), None)
     if band is None:
         raise HTTPException(status_code=404, detail='band not found')
@@ -68,4 +70,4 @@ async def create_band(band_data: BandCreate) -> BandWithID:
     BANDS.append(band)
     return band
 
-# using postman to test the post and get requests 
+# using postman to test the post and get requests
