@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8001/bands
+Content-Type: application/json
+{
+  "name": "New Band",
+  "genre": "Classic",
+  "albums": []
+}
