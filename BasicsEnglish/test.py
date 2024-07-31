@@ -5,7 +5,7 @@ def printer(func):
         print('End')
         return main
 
-    return tazeenkonande()
+    return tazeenkonande
 
 
 @printer
