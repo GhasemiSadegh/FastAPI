@@ -1,13 +1,23 @@
-# from typing import Annotated
-#
-#
-# def sums(a: Annotated[int, (0, 10)], b: int):
-#     return a + b
-
-def timer(f):
-    def wrapper(*args, **kwargs):
+def printer(func):
+    def tazeenkonande(*args, **kwargs):
         print('Start')
-        main = f(*args, **kwargs)
+        main = func(*args, **kwargs)
         print('End')
         return main
-    return wrapper()
+
+    return tazeenkonande()
+
+
+@printer
+def x():
+    print('I am x.')
+
+
+@printer
+def y():
+    print('I am y.')
+
+
+@printer
+def z():
+    print('I am z.')
