@@ -1,20 +1,20 @@
-# # def decorator(func):
-# #
-# #     def wrapper(*args, **kwargs):
-# #         print('this is your information')
-# #         main = func(*args, **kwargs)
-# #         print('see you next time')
-# #
-# #         return main
-# #     return wrapper()
-# #
-# #
-# # @decorator
-# # def info():
-# #     print('x')
-# #
-# #
-# #
+# def decorator(func):
+#
+#     def wrapper(*args, **kwargs):
+#         print('this is your information')
+#         main = func(*args, **kwargs)
+#         print('see you next time')
+#
+#         return main
+#     return wrapper()
+#
+#
+# @decorator
+# def info():
+#     print('x')
+#
+#
+#
 #
 # def timer(f):
 #     def wrapper(*args, **kwargs):
@@ -52,17 +52,40 @@
 # print(next(my_count))
 # print(next(my_count))
 
-from fastapi import FastAPI, Depends
-
-app = FastAPI()
-
-
-def function():
-    x = 1
-    return x + 1
-
-
-@app.get("/items/")
-async def vabaste(y: int = Depends(function)):
-    return {"result": y + 1}
-
+# from fastapi import FastAPI, Depends
+#
+# app = FastAPI()
+#
+#
+# def function():
+#     x = 1
+#     return x + 1
+#
+#
+# @app.get("/items/")
+# async def vabaste(y: int = Depends(function)):
+#     return {"result": y + 1}
+#
+# def printer(func):
+#     def tazeenkonande(*args, **kwargs):
+#         print('Start')
+#         main = func(*args, **kwargs)
+#         print('End')
+#         return main
+#
+#     return tazeenkonande
+#
+#
+# @printer
+# def x():
+#     print('I am x.')
+#
+#
+# @printer
+# def y():
+#     print('I am y.')
+#
+#
+# @printer
+# def z():
+#     print('I am z.')
