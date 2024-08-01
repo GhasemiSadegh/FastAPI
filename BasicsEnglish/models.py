@@ -7,7 +7,7 @@ from datetime import date
 class AlbumBase(SQLModel):
     title: str
     release_date: date
-    band_id: int = Field(foreign_key="band.id")
+    band_id: int | None = Field(foreign_key="band.id")
 
 
 class Album(AlbumBase, table=True):
