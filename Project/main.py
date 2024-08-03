@@ -26,7 +26,7 @@ def show_books():
 @app.delete('/delete/{book_id}')
 def delete_book(book_id: int):
     with Session(engine) as session:
-        selected = session.exec(select(BaseLibrary).where(BaseLibrary.id ==book_id)).first()
+        selected = session.exec(select(BaseLibrary).where(BaseLibrary.id == book_id)).first()
         session.delete(selected)
         session.commit()
         return f'The book with id {book_id} removed.'
@@ -35,8 +35,10 @@ def delete_book(book_id: int):
 @app.put('/update/{book_id}')
 def update_book(book_id: int, book_update: BaseLibrary):
     with Session(engine) as session:
-        selected = session.exec(select(BaseLibrary).where(BaseLibrary.id ==book_id)).first()
+        selected = session.exec(select(BaseLibrary).where(BaseLibrary.id == book_id)).first()
+
         selected.title = book_update.title
         session.add(selected)
         session.commit()
         session.refresh(selected)
+    return 'File Updated.'
