@@ -1,4 +1,5 @@
 from sqlmodel import SQLModel, Field
+from database import engine
 
 
 class BaseLibrary(SQLModel):
@@ -9,4 +10,7 @@ class BaseLibrary(SQLModel):
 
 
 class Library(BaseLibrary, table=True):
-    id: int = Field(None, primary_key=True)
+    id: int = Field(primary_key=True)
+
+
+SQLModel.metadata.create_all(engine)
