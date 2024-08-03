@@ -1,16 +1,8 @@
-from sqlmodel import SQLModel, Session, create_engine, Field
+from sqlmodel import SQLModel, create_engine, Session
 
 
 DB_URL = 'sqlite:///database.sqlite'
 engine = create_engine(DB_URL)
-
-
-class Library(SQLModel, table=True):
-    id: int = Field(primary_key=True)
-    title: str
-    author: str
-    pub_year: int
-    genre: str
 
 
 def get_session():

@@ -10,3 +10,4 @@ def create_book(book: Library):
     with Session(engine) as session:
         session.add(book)
         session.commit()
+    return 'Book added.'
