@@ -6,14 +6,11 @@ engine = create_engine(DB_URL)
 
 
 class BaseLibrary(SQLModel):
+    id: Optional[int] = Field(primary_key=True, index=True)
     title: str
     author: str
     pub_year: int
     genre: str
-
-
-class Library(BaseLibrary, table=True):
-    id: Optional[int] = Field(primary_key=True, index=True)
 
 
 def get_session():

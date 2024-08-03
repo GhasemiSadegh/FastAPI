@@ -33,11 +33,10 @@ def delete_book(book_id: int):
 
 
 @app.put('/update/{book_id}')
-def update_book(book_id: int, book_update: BaseLibrary):
+def update_book(book_id: int, new: BaseLibrary):
     with Session(engine) as session:
         selected = session.exec(select(BaseLibrary).where(BaseLibrary.id == book_id)).first()
-
-        selected.title = book_update.title
+        selected.title = new.title
         session.add(selected)
         session.commit()
         session.refresh(selected)

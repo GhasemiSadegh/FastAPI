@@ -1,3 +1,0 @@
-The Book Management System will be a simple application to manage a collection of books in a library. Users can add,
- update, delete, and view books in the database. Each book will have properties like title, author, publication year,
-  and genre.

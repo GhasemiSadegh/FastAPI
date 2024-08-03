@@ -3,11 +3,11 @@ from database import engine
 
 
 class BaseLibrary(SQLModel, table=True):
-    id: int = Field(primary_key=True)
-    title: str
-    author: str
-    pub_year: int
-    genre: str
+    id: int = Field(default=None, primary_key=True)
+    title: str = Field(default=None, max_length=20, unique=True)
+    author: str = Field(default=None, min_length=3)
+    pub_year: int = Field(default=None, description='The year the book was published.')
+    genre: str = Field(default=None, title='Genres')
 
 
 SQLModel.metadata.create_all(engine)
