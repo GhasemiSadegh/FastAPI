@@ -1,6 +1,8 @@
 from fastapi import FastAPI
-from database import BaseLibrary, Session, engine
 from sqlmodel import SQLModel, select
+from models import BaseLibrary, engine
+from database import Session
+
 
 app = FastAPI()
 

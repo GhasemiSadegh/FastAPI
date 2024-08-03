@@ -1,24 +1,12 @@
-from sqlmodel import SQLModel, Session, create_engine, Field
-from typing import Optional
+from sqlmodel import create_engine, Session, SQLModel
 
 DB_URL = 'sqlite:///database.sqlite'
 engine = create_engine(DB_URL)
 
 
-class BaseLibrary(SQLModel):
-    id: Optional[int] = Field(primary_key=True, index=True)
-    title: str
-    author: str
-    pub_year: int
-    genre: str
+def init_db():
+    SQLModel.metadata.create_all(engine)
 
 
 def get_session():
-    session = Session(engine)
-    try:
-        yield session
-    finally:
-        session.close()
-
-
-SQLModel.metadata.create_all(engine)
+    return Session(engine)
