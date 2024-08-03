@@ -13,7 +13,7 @@ def create_book(book: Library):
     return 'Book added.'
 
 
-@app.get('/library1')
+@app.get('/books')
 def show_books():
     with Session(engine) as session:
         selected = select(Library)
@@ -21,3 +21,14 @@ def show_books():
         books = results.all()
         return (f'List of book \n'
                 f'{books}')
+
+
+@app.delete('/delete/{book_id}')
+def delete_book(book_id: int):
+    with Session(engine) as session:
+        selected = session.exec(select(Library).where(Library.id ==book_id)).first()
+        session.delete(selected)
+        session.commit()
+        return f'The book with id {book_id} removed.'
+
+
