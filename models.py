@@ -8,3 +8,4 @@ class BaseLibrary(SQLModel, table=True):
     author: str = Field(default=None, min_length=3)
     pub_year: int = Field(default=None, description='The year the book was published.')
     genre: str = Field(default=None, title='Genres')
+    pages: int
