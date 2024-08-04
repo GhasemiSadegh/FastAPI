@@ -2,7 +2,7 @@ from fastapi import FastAPI
 # from enum import Enum
 # from typing import Optional
 # import uvicorn
-from Basics.router import practice, myhome_get, myhome_post
+from other.Basics.router import practice, myhome_post, myhome_get
 
 app = FastAPI()
 
