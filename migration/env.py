@@ -13,6 +13,7 @@ from alembic import context
 config = context.config
 
 DB_PATH = str((Path().parent / 'database.sqlite').resolve())
+config.set_main_option('sqlalchemy.url', f"sqlite:///{DB_PATH}")
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
